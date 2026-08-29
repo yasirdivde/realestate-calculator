@@ -59,15 +59,21 @@ function numberToWords(num) {
 
 // ********************* Main Calculation *********************
 function calculateAndPopulate() {
-    // Get form values using the new IDs
+    // Get form values
     const sectorNo = document.getElementById('sectorNumber').value;
     const carpetAreaInput = parseFloat(document.getElementById('carpetArea').value);
     const terraceAreaInput = parseFloat(document.getElementById('terraceArea').value) || 0;
     const ghasara = document.getElementById('propertyAge').value;
     const floorNumber = document.getElementById('floorNumber').value;
+    const areaMode = document.getElementById('areaMode').value; // 'carpet' or 'builtup'
 
-    // Built-up area = carpet area * 1.2
-    const area = (carpetAreaInput * 1.2).toFixed(3);
+    // Determine built-up area: if builtup mode, use input directly; else apply 20% uplift
+    let area;
+    if (areaMode === 'builtup') {
+        area = carpetAreaInput.toFixed(3); // already built-up
+    } else {
+        area = (carpetAreaInput * 1.2).toFixed(3); // carpet → built-up (20% uplift)
+    }
 
     // ----- Sector rates (resiValue & landValue) -----
     let resiValue, landValue;
@@ -157,6 +163,6 @@ function calculateAndPopulate() {
     document.getElementById('totalN').textContent = formattedTotal;
     document.getElementById('totalW').textContent = wordsTotal;
 
-    // Optionally handle terrace row visibility if needed (not required)
-   document.getElementById('terraceRow').style.display = (terraceAreaInput == 0) ? 'none' : 'table-row';
+    // Hide terrace row if terrace area is zero
+    document.getElementById('terraceRow').style.display = (terraceAreaInput == 0) ? 'none' : 'table-row';
 }

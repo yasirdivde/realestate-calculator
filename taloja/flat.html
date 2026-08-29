@@ -46,7 +46,6 @@
             width: 100%;
         }
 
-        /* Back button inside container, left aligned */
         .back-link-bar {
             margin-bottom: 0.75rem;
         }
@@ -328,6 +327,32 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Toggle styles */
+        .area-toggle {
+            display: flex;
+            border: 1px solid #cfd8dc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .toggle-btn {
+            background: #ffffff;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Roboto', sans-serif;
+        }
+        .toggle-btn.active {
+            background: #003366;
+            color: #ffffff;
+        }
+        .toggle-btn:not(.active):hover {
+            background: #f0f4f8;
+        }
     </style>
 </head>
 <body>
@@ -337,16 +362,13 @@
     </header>
 
     <main class="gov-container">
-        <!-- Back link inside container, left aligned with card -->
         <div class="back-link-bar" id="formBackLinkBar">
             <a href="../homeRR.html">
                 <i class="fa-solid fa-arrow-left"></i> Back
             </a>
         </div>
 
-        <!-- ===== Form Card ===== -->
         <div class="gov-card" id="formCard">
-            <!-- Summary indicator -->
             <div class="summary-indicator">
                 <span class="font-semibold"><i class="fa-solid fa-building mr-1"></i>Flat</span>
                 <span class="text-gray-400"><i class="fa-solid fa-chevron-right"></i></span>
@@ -391,9 +413,19 @@
                         </select>
                     </div>
 
+                    <!-- Carpet/Built-up toggle field -->
                     <div class="form-group">
-                        <label class="form-label" for="carpetArea">Carpet Area (m²) <span class="text-red-600">*</span></label>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="form-label" id="areaLabel" for="carpetArea">
+                                Carpet Area (m²) <span class="text-red-600">*</span>
+                            </label>
+                            <div class="area-toggle" id="areaToggle">
+                                <button type="button" class="toggle-btn active" data-mode="carpet">Carpet</button>
+                                <button type="button" class="toggle-btn" data-mode="builtup">Built-up</button>
+                            </div>
+                        </div>
                         <input type="number" id="carpetArea" class="form-input" placeholder="e.g. 65.5" min="0.1" step="0.01" required>
+                        <input type="hidden" id="areaMode" value="carpet">
                     </div>
 
                     <div class="form-group">
@@ -428,16 +460,14 @@
             </form>
         </div>
 
-        <!-- ===== Result Section (hidden initially) ===== -->
+        <!-- Result Section (unchanged) -->
         <div id="resultSection" class="hidden">
-            <!-- Back to form button -->
             <div class="back-link-bar" id="backToFormBar">
                 <a href="#" id="backToFormLink">
                     <i class="fa-solid fa-arrow-left"></i> Back to Form
                 </a>
             </div>
 
-            <!-- Result Card with table -->
             <div class="result-card" id="shareableCard">
                 <table class="valuation-table">
                     <tr>
@@ -505,7 +535,6 @@
                 </table>
             </div>
 
-            <!-- Share button -->
             <div class="share-wrapper">
                 <button class="btn-share" id="shareBtn">
                     <i class="fa-solid fa-share-alt"></i> Share Results
@@ -518,7 +547,6 @@
         <i class="fa-solid fa-code mr-1"></i> Developed by <a href="https://github.com/yasirdivde" target="_blank">Yasir Divde</a>
     </footer>
 
-    <!-- Loading overlay (hidden) -->
     <div id="loadingOverlay" class="loading-overlay hidden">
         <div class="loading-spinner"></div>
         <div class="text-gray-600 font-medium">Calculating...</div>
@@ -553,6 +581,28 @@
                 });
             });
 
+            // Toggle logic
+            const toggleButtons = document.querySelectorAll('.toggle-btn');
+            const areaModeInput = document.getElementById('areaMode');
+            const areaLabel = document.getElementById('areaLabel');
+            const areaInput = document.getElementById('carpetArea');
+
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    toggleButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const mode = this.dataset.mode;
+                    areaModeInput.value = mode;
+                    if (mode === 'builtup') {
+                        areaLabel.innerHTML = 'Built-up Area (m²) <span class="text-red-600">*</span>';
+                        areaInput.placeholder = 'e.g. 78.6';
+                    } else {
+                        areaLabel.innerHTML = 'Carpet Area (m²) <span class="text-red-600">*</span>';
+                        areaInput.placeholder = 'e.g. 65.5';
+                    }
+                });
+            });
+
             // Form submit
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -566,62 +616,51 @@
                 }
 
                 errorMessage.classList.add('hidden');
-
-                // Show loading overlay
                 loadingOverlay.classList.remove('hidden');
 
-                // After 2 seconds, hide form, show result
                 setTimeout(() => {
                     loadingOverlay.classList.add('hidden');
                     formCard.classList.add('hidden');
                     resultSection.classList.remove('hidden');
-
-                    // Hide header, footer, and form back button
                     mainHeader.classList.add('hidden');
                     mainFooter.classList.add('hidden');
                     formBackLinkBar.classList.add('hidden');
 
-                    // ** Call the calculation function from flat.js **
                     calculateAndPopulate();
                 }, 2000);
             });
 
-            // Reset button
             document.getElementById('resetBtn').addEventListener('click', function() {
                 form.reset();
                 errorMessage.classList.add('hidden');
+                // Reset toggle to carpet
+                toggleButtons.forEach(b => b.classList.remove('active'));
+                toggleButtons[0].classList.add('active');
+                areaModeInput.value = 'carpet';
+                areaLabel.innerHTML = 'Carpet Area (m²) <span class="text-red-600">*</span>';
+                areaInput.placeholder = 'e.g. 65.5';
             });
 
-            // Back to form link
             backToFormLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 resultSection.classList.add('hidden');
                 formCard.classList.remove('hidden');
-                // Show header, footer, and form back button again
                 mainHeader.classList.remove('hidden');
                 mainFooter.classList.remove('hidden');
                 formBackLinkBar.classList.remove('hidden');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Share button (screenshot)
             shareBtn.addEventListener('click', async function () {
                 const card = document.getElementById('shareableCard');
                 try {
-                    // 1. Explicitly force the browser to load the exact weights used in the table
                     await document.fonts.load("400 16px Roboto");
                     await document.fonts.load("500 16px Roboto");
                     await document.fonts.load("700 16px Roboto");
-                    
-                    // 2. Wait for all fonts to confirm they are ready
                     await document.fonts.ready;
-                    
-                    // 3. Give slower mobile devices 300ms to visually repaint the screen
                     await new Promise(resolve => setTimeout(resolve, 300));
-                    
                     const pixelRatio = window.devicePixelRatio || 1;
                     const scale = pixelRatio > 1 ? pixelRatio * 2 : 3;
-
                     const canvas = await html2canvas(card, {
                         scale: scale,
                         backgroundColor: '#ffffff',
@@ -629,15 +668,13 @@
                         useCORS: true,
                         allowTaint: false
                     });
-
                     canvas.toBlob(async (blob) => {
                         if (!blob) {
                             alert('Screenshot failed. Please try again.');
                             return;
                         }
                         const file = new File([blob], 'valuation-report.png', { type: 'image/png' });
-                         // Get the total value from the table
-            const totalValue = document.getElementById('totalN').textContent.trim();
+                        const totalValue = document.getElementById('totalN').textContent.trim();
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
                             try {
                                 await navigator.share({
@@ -664,7 +701,7 @@
             });
         })();
     </script>
-    <!-- Additional script to preserve image display -->
+        <!-- Additional script to preserve image display --> 
     <script>
         const style = document.createElement('style');
         document.head.appendChild(style);

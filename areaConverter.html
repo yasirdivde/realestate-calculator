@@ -108,7 +108,6 @@
             font-weight: 700;
             border-bottom-color: #d32f2f;
         }
-        /* Mobile adjustments for tabs */
         @media (max-width: 480px) {
             .tab-btn {
                 font-size: 0.8rem;
@@ -180,6 +179,20 @@
             color: #6b7280;
             margin-top: 0.75rem;
             text-align: center;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+            font-size: 0.85rem;
+            color: #1f2937;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            accent-color: #003366;
+            cursor: pointer;
         }
         .gov-footer {
             text-align: center;
@@ -272,7 +285,14 @@
                         </button>
                     </div>
                 </div>
-                <div class="conversion-info">
+
+                <!-- New checkbox for special circular -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="specialCircularCheck">
+                    <label for="specialCircularCheck">Sale/Resale of built up Property constructed after circular dt.02/01/2018</label>
+                </div>
+
+                <div class="conversion-info" id="conversionInfoText">
                     Built-up Area = Carpet Area + 20%
                 </div>
             </div>
@@ -347,12 +367,28 @@
         }
 
         // Carpet Area <-> Built-up Area conversions (in m²)
-        const BUILTUP_FACTOR = 1.2; // +20%
+        let builtupFactor = 1.2; // default +20%
+
+        function updateBuiltupFactor() {
+            const check = document.getElementById('specialCircularCheck');
+            builtupFactor = check.checked ? 1.1 : 1.2;
+            document.getElementById('conversionInfoText').textContent =
+                check.checked ? 'Built-up Area = Carpet Area + 10%' : 'Built-up Area = Carpet Area + 20%';
+        }
+
+        document.getElementById('specialCircularCheck').addEventListener('change', function() {
+            updateBuiltupFactor();
+            // Recalculate if any input has a value
+            const carpetVal = document.getElementById('carpetInput').value;
+            const builtupVal = document.getElementById('builtupInput').value;
+            if (carpetVal !== '') convertFromCarpet();
+            else if (builtupVal !== '') convertFromBuiltup();
+        });
 
         function convertFromCarpet() {
             const carpet = parseFloat(document.getElementById('carpetInput').value);
             if (!isNaN(carpet) && carpet >= 0) {
-                const builtup = carpet * BUILTUP_FACTOR;
+                const builtup = carpet * builtupFactor;
                 document.getElementById('builtupInput').value = builtup.toFixed(4);
             } else {
                 document.getElementById('builtupInput').value = '';
@@ -362,7 +398,7 @@
         function convertFromBuiltup() {
             const builtup = parseFloat(document.getElementById('builtupInput').value);
             if (!isNaN(builtup) && builtup >= 0) {
-                const carpet = builtup / BUILTUP_FACTOR;
+                const carpet = builtup / builtupFactor;
                 document.getElementById('carpetInput').value = carpet.toFixed(4);
             } else {
                 document.getElementById('carpetInput').value = '';
@@ -375,6 +411,7 @@
             document.getElementById('sqmInput').value = '';
             document.getElementById('carpetInput').value = '';
             document.getElementById('builtupInput').value = '';
+            updateBuiltupFactor(); // set initial text
         });
     </script>
 </body>
