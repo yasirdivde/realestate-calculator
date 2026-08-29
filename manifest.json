@@ -1,0 +1,22 @@
+{
+  "name": "Real Estate Calculator - NIRE",
+  "short_name": "Real Estate Calculator",
+  "description": "Calculate Ready Reckoner Kharghar and Taloja, Leave and License Stamp Duty Calculator",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "./images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Input Guide – Real Estate Calculator</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Roboto font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .gov-header {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 3px solid #d32f2f;
+        }
+        .gov-header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            margin: 0;
+        }
+        .gov-container {
+            max-width: 700px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            width: 100%;
+        }
+        .back-link-bar {
+            margin-bottom: 0.75rem;
+        }
+        .back-link-bar a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid #cfd8dc;
+            border-radius: 4px;
+            background-color: #ffffff;
+            transition: background-color 0.2s;
+        }
+        .back-link-bar a:hover {
+            background-color: #f0f4f8;
+        }
+        .gov-card {
+            background: #ffffff;
+            border: 1px solid #cfd8dc;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+        }
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .guide-table th {
+            background: #003366;
+            color: #ffffff;
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            font-weight: 700;
+            border: 1px solid #cfd8dc;
+        }
+        .guide-table td {
+            padding: 0.7rem 0.9rem;
+            border: 1px solid #cfd8dc;
+            vertical-align: top;
+        }
+        .guide-table tbody tr:nth-child(even) {
+            background-color: #fafbfc;
+        }
+        .guide-table tbody tr:hover {
+            background-color: #f0f4f8;
+        }
+        .area-name {
+            font-weight: 500;
+            color: #1f2937;
+        }
+        .percentage {
+            font-weight: 700;
+            color: #003366;
+            font-size: 1.05rem;
+        }
+        .percentage-note {
+            font-size: 0.8rem;
+            color: #4b5563;
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+        .example-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .example-box strong {
+            color: #003366;
+        }
+        .gov-footer {
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: auto;
+            border-top: 1px solid #e5e7eb;
+        }
+        .gov-footer a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .gov-footer a:hover { text-decoration: underline; }
+        @media (max-width: 480px) {
+            .gov-card { padding: 1rem; }
+            .guide-table th, .guide-table td { padding: 0.5rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="gov-header">
+        <h1><i class="fa-solid fa-circle-info mr-2"></i>Area Input Guide</h1>
+    </header>
+
+    <main class="gov-container">
+        <!-- Back link -->
+        <div class="back-link-bar">
+            <a href="./index.html">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <div class="gov-card">
+            <h2 style="font-size: 1.2rem; font-weight: 700; color: #003366; margin-bottom: 1rem;">
+                Area Inclusion Percentages
+            </h2>
+
+            <table class="guide-table">
+                <thead>
+                    <tr>
+                        <th style="width: 55%;">Area</th>
+                        <th style="width: 45%;">Percentage (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="area-name">Enclosed Balcony</td>
+                        <td>
+                            <div class="percentage">100%</div>
+                            <div class="percentage-note">Should be included in Built-up Area</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">F. B.</td>
+                        <td>
+                            <div class="percentage">100%</div>
+                            <div class="percentage-note">Should be included in Built-up Area</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">D. B.</td>
+                        <td>
+                            <div class="percentage">100%</div>
+                            <div class="percentage-note">Should be included in Built-up Area</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Deck</td>
+                        <td>
+                            <div class="percentage">100%</div>
+                            <div class="percentage-note">Should be included in Built-up Area</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Open Balcony</td>
+                        <td>
+                            <div class="percentage">40%</div>
+                            <div class="percentage-note">Applicable Rate</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Terrace Attached</td>
+                        <td>
+                            <div class="percentage">40%</div>
+                            <div class="percentage-note">Applicable Rate</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Terrace Above</td>
+                        <td>
+                            <div class="percentage">25%</div>
+                            <div class="percentage-note">Applicable Rate</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Open Parking</td>
+                        <td>
+                            <div class="percentage">40%</div>
+                            <div class="percentage-note">of Open Land</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Mechanical Parking</td>
+                        <td>
+                            <div class="percentage">15%</div>
+                            <div class="percentage-note">Applicable Rate</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Loft (पोटमाळा) <span style="color:#d32f2f; font-size:0.8rem;">(Shop only)</span></td>
+                        <td>
+                            <div class="percentage">25%</div>
+                            <div class="percentage-note">Applicable Rate</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="area-name">Covered/Stilt Parking</td>
+                        <td>
+                            <div class="percentage">25% वापर दर</div>
+                            <div class="percentage-note">
+                                SEE FORMULA
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <strong>FORMULA<br>Parking area * Residential Value × (1 - Age of Property) × 25%</strong><br><br><hr><br>
+                <strong>Example:</strong><br>
+                Residential Rate = 1,17,700<br>
+                Covered Parking Area = 1.21 m²<br>
+                Age of Property = 14 years<br>
+                <strong>Calculation:</strong><br>
+                1.21 × (1,17,700 × 86%) × 25% = <strong>30,620</strong>
+            </div>
+        </div>
+    </main>
+
+    <footer class="gov-footer">
+        <i class="fa-solid fa-code mr-1"></i> Developed by <a href="https://github.com/yasirdivde" target="_blank">Yasir Divde</a>
+    </footer>
+
+</body>
+</html>

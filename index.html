@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Calculator – New India Real Estate</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Roboto font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#111111">
+    <link rel="apple-touch-icon" href="./images/icon-192.png">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .gov-header {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 3px solid #d32f2f;
+        }
+        .gov-header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            margin: 0;
+        }
+        .gov-container {
+            max-width: 600px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            width: 100%;
+        }
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .service-card {
+            background: #ffffff;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            padding: 0.9rem 1.2rem;
+            text-decoration: none;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s ease;
+        }
+        .service-card:hover {
+            border-color: #b0bec5;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+            transform: translateX(4px);
+        }
+        .service-icon {
+            background: linear-gradient(135deg, #d32f2f 0%, #1976d2 100%);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .service-info {
+            flex: 1;
+        }
+        .service-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #003366;
+            margin-bottom: 0.15rem;
+        }
+        .service-desc {
+            font-size: 0.8rem;
+            color: #5f6b7a;
+            line-height: 1.3;
+        }
+        .service-arrow {
+            font-size: 1rem;
+            color: #b0bec5;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .service-card:hover .service-arrow {
+            color: #1976d2;
+            transform: translateX(3px);
+        }
+        .gov-footer {
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: auto;
+            border-top: 1px solid #e5e7eb;
+        }
+        .gov-footer a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .gov-footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header class="gov-header">
+        <h1><i class="fa-solid fa-calculator mr-2"></i>Real Estate Calculator</h1>
+    </header>
+
+    <main class="gov-container">
+        <div style="text-align: center; margin-bottom: 0.5rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: #003366;">Select a Service</h2>
+        </div>
+
+        <div class="service-list">
+            <!-- Ready Reckoner -->
+            <a href="./homeRR.html" class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
+                <div class="service-info">
+                    <div class="service-title">Ready Reckoner Calculator</div>
+                    <div class="service-desc">Kharghar &amp; Taloja only</div>
+                </div>
+                <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Stamp Duty -->
+            <a href="./LLSD.html" class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-stamp"></i></div>
+                <div class="service-info">
+                    <div class="service-title">Stamp Duty Calculator</div>
+                    <div class="service-desc">Leave &amp; License</div>
+                </div>
+                <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Area Converter -->
+            <a href="./areaConverter.html" class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                <div class="service-info">
+                    <div class="service-title">Area Converter</div>
+                </div>
+                <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="gov-footer">
+        <i class="fa-solid fa-code mr-1"></i> Developed by <a href="https://github.com/yasirdivde" target="_blank">Yasir Divde</a>
+    </footer>
+<script>
+    if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(registration => {
+        console.log("Service Worker registered:", registration.scope);
+      })
+      .catch(error => {
+        console.error("Service Worker registration failed:", error);
+      });
+  });
+}
+</script>
+</body>
+</html>
