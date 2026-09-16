@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Links – Real Estate Calculator</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Roboto font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .gov-header {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 3px solid #d32f2f;
+        }
+        .gov-header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            margin: 0;
+        }
+        .gov-container {
+            max-width: 700px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            width: 100%;
+        }
+        .back-link-bar {
+            margin-bottom: 0.75rem;
+        }
+        .back-link-bar a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid #cfd8dc;
+            border-radius: 4px;
+            background-color: #ffffff;
+            transition: background-color 0.2s;
+        }
+        .back-link-bar a:hover {
+            background-color: #f0f4f8;
+        }
+        .gov-card {
+            background: #ffffff;
+            border: 1px solid #cfd8dc;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #003366;
+            margin-bottom: 0.25rem;
+        }
+        .card-desc {
+            font-size: 0.85rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #f0f4f8;
+            color: #003366;
+            border: 1px solid #cfd8dc;
+            border-radius: 4px;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s, border-color 0.2s;
+            word-break: break-all;
+        }
+        .link-btn:hover {
+            background: #e6f3ff;
+            border-color: #1976d2;
+        }
+        .link-btn i {
+            font-size: 0.75rem;
+            color: #1976d2;
+        }
+        .link-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        .link-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .version-tag {
+            display: inline-block;
+            background: #e6f3ff;
+            color: #003366;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-right: 0.4rem;
+        }
+        .badge-free {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+        }
+        .badge-paid {
+            display: inline-block;
+            background: #fff3e0;
+            color: #b71c1c;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+        }
+        .gov-footer {
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: auto;
+            border-top: 1px solid #e5e7eb;
+        }
+        .gov-footer a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .gov-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="gov-header">
+        <h1><i class="fa-solid fa-link mr-2"></i>Important Links</h1>
+    </header>
+
+    <main class="gov-container">
+        <!-- Back link -->
+        <div class="back-link-bar">
+            <a href="./index.html">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <div class="gov-card">
+
+            <!-- 1. Free Search -->
+            <div class="link-item">
+                <div class="card-title">
+                    1. Free Search
+                    <span class="badge-free ml-1">FREE</span>
+                </div>
+                <div class="card-desc">
+                    Search registered property/document records and access available registration details and Index II information for FREE.
+                </div>
+                <div style="display:flex; flex-direction: column; gap: 0.5rem;">
+                    <a href="https://freesearchigrservice.maharashtra.gov.in/" target="_blank" rel="noopener" class="link-btn">
+                        <i class="fa-solid fa-external-link-alt"></i>
+                        <span><span class="version-tag">v1.9</span> freesearchigrservice.maharashtra.gov.in</span>
+                    </a>
+                    <a href="https://pay2igr.igrmaharashtra.gov.in/eDisplay/" target="_blank" rel="noopener" class="link-btn">
+                        <i class="fa-solid fa-external-link-alt"></i>
+                        <span><span class="version-tag">v2.1</span> pay2igr.igrmaharashtra.gov.in/eDisplay</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. Paid Search -->
+            <div class="link-item">
+                <div class="card-title">
+                    2. Paid Search
+                    <span class="badge-paid ml-1">PAID</span>
+                </div>
+                <div class="card-desc">
+                    ePraman facility for obtaining Full Document PDF, Index II PDF, and Search Reports through the official ePraman website (Paid Process).
+                </div>
+                <a href="https://epraman.igrmaharashtra.gov.in/" target="_blank" rel="noopener" class="link-btn">
+                    <i class="fa-solid fa-external-link-alt"></i>
+                    <span>epraman.igrmaharashtra.gov.in</span>
+                </a>
+            </div>
+
+            <!-- 3. Mahadiscom -->
+            <div class="link-item">
+                <div class="card-title">
+                    3. Mahadiscom – Upload Documents, Pay Charges &amp; Track Status
+                </div>
+                <div class="card-desc">
+                    The official MSEDCL / Mahavitaran portal to track <strong>Name Change applications, upload required documents, check / pay applicable charges,</strong> and manage related application services, including <strong>Address Correction.</strong>
+                </div>
+                <a href="https://css.mahadiscom.in/UI/CHANGENAME/ChangeNameUploadDoc.aspx" target="_blank" rel="noopener" class="link-btn">
+                    <i class="fa-solid fa-external-link-alt"></i>
+                    <span>css.mahadiscom.in/UI/CHANGENAME/ChangeNameUploadDoc.aspx</span>
+                </a>
+            </div>
+                 <!-- 4. Mahadiscom Mobile & Email Update -->
+            <div class="link-item">
+                <div class="card-title">
+                    4. Mahavitaran – Mobile Number &amp; Email Update
+                                 </div>
+                <div class="card-desc">
+                    Online facility to *Register / Update <strong>Mobile number, Email,Aadhar number, TDS and PAN No</strong> on Mahavitaran Portal.
+                  </div>
+                <a href="https://pro.mahadiscom.in/ConsumerContact/consumer" target="_blank" rel="noopener" class="link-btn">
+                    <i class="fa-solid fa-external-link-alt"></i>
+                    <span>pro.mahadiscom.in/ConsumerContact/consumer</span>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="gov-footer">
+        <i class="fa-solid fa-code mr-1"></i> Developed by <a href="https://github.com/yasirdivde" target="_blank">Yasir Divde</a>
+    </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('a[href^="https://"]').forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            window.open(this.href, "_blank", "noopener,noreferrer");
+        });
+    });
+});
+</script>
+</body>
+</html>
