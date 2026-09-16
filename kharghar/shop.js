@@ -138,7 +138,7 @@ function calculateAndPopulate() {
 
     // ----- Total values (no terrace for shop) -----
     const total = area * applicableRate;
-    const roundedTotal = Math.round(total / 100) * 100;
+    const roundedTotal = Math.ceil(total / 100) * 100;
     const formattedTotal = formatIndianNumber(roundedTotal);
     const wordsTotal = numberToWords(roundedTotal);
 
