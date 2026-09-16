@@ -146,7 +146,7 @@ function calculateAndPopulate() {
     const total = area * applicableRate;
     const totalTerraceArea = terraceAreaInput * (applicableRate * 40 / 100);
     const grandTotal = total + totalTerraceArea;
-    const roundedTotal = Math.round(grandTotal / 100) * 100;
+    const roundedTotal = Math.ceil(grandTotal / 100) * 100;
     const formattedTotal = formatIndianNumber(roundedTotal);
     const wordsTotal = numberToWords(roundedTotal);
 
